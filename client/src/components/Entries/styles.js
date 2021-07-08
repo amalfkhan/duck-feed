@@ -9,7 +9,7 @@ const addEntryUseStyles = makeStyles({
   field: {
     marginTop: 20,
     marginBottom: 20,
-    width: "80%",
+    width: "60%",
   },
   helperText: {
     color: "red",
