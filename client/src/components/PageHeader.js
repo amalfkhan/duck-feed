@@ -1,8 +1,7 @@
-import { Grid, Typography } from "@material-ui/core";
-import AddEntry from "./Entries/AddEntry";
+import { Grid, Typography, Button } from "@material-ui/core";
 import useStyles from "./styles";
 
-const PageHeader = () => {
+const PageHeader = ({ children }) => {
   const classes = useStyles();
   return (
     <Grid
@@ -19,12 +18,12 @@ const PageHeader = () => {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h6" color="textSecondary">
+        <Typography variant="h6" color="textSecondary" gutterBottom>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </Typography>
       </Grid>
 
-      <AddEntry />
+      <div>{children}</div>
     </Grid>
   );
 };

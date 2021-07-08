@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Card, Typography, CardContent } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { Card, Typography, CardContent, Button } from "@material-ui/core";
 import EntryDataServices from "../../services/entry.services";
 import { entriesListUseStyles } from "./styles";
 
@@ -28,6 +29,15 @@ const EntriesList = () => {
   //create a card to display each entry
   return (
     <>
+      <Button
+        variant="contained"
+        color="primary"
+        // className={classes.button}
+        component={Link}
+        to={{ pathname: "/add" }}
+      >
+        Add entry
+      </Button>
       {entries.map((entry, index) => {
         return (
           <div key={index}>
@@ -43,9 +53,7 @@ const EntriesList = () => {
                 <Typography variant="h5" component="h2">
                   {entry.name}
                 </Typography>
-                <Typography className={classes.address} color="textSecondary">
-                  {entry.location}
-                </Typography>
+                <Typography color="textSecondary">{entry.location}</Typography>
                 <Typography variant="body2" component="p">
                   {entry.numFed}
                   {bull}

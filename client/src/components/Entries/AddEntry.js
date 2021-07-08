@@ -1,6 +1,7 @@
 // import { Grid, Button } from "@material-ui/core";
 import React from "react";
 import {
+  Grid,
   Button,
   TextField,
   Dialog,
@@ -9,6 +10,12 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@material-ui/core";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 import { addEntryUseStyles } from "./styles";
 
 export default () => {
@@ -25,7 +32,8 @@ export default () => {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      Add Entry
+      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Add entry
       </Button>
       <Dialog open={open} onClose={handleClose}>
@@ -40,6 +48,23 @@ export default () => {
             label="Name"
             variant="outlined"
           />
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Grid container justifyContent="space-around">
+              <KeyboardDatePicker
+                disableToolbar
+                variant="inline"
+                format="MM/dd/yyyy"
+                margin="normal"
+                id="feed-date"
+                label="Feed Date"
+              />
+              <KeyboardTimePicker
+                margin="normal"
+                id="feed-time"
+                label="Feed Time"
+              />
+            </Grid>
+          </MuiPickersUtilsProvider>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -49,7 +74,7 @@ export default () => {
             Save
           </Button>
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
     </div>
   );
 };
