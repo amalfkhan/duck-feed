@@ -1,5 +1,5 @@
 import { makeStyles, Grid, Typography } from "@material-ui/core";
-import AddEntry from "./AddEntry";
+import AddEntry from "./Entries/AddEntry";
 
 const useStyles = makeStyles({
   header: {

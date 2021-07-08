@@ -1,11 +1,11 @@
 import PageHeader from "./components/PageHeader";
-import Entries from "./components/Entries";
+import EntriesList from "./components/Entries/EntriesList";
 
 function App() {
   return (
     <div className="App">
       <PageHeader />
-      <Entries />
+      <EntriesList />
     </div>
   );
 }
