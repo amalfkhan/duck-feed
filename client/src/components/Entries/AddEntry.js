@@ -3,12 +3,9 @@ import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import {
-  FormControlLabel,
   FormControl,
   FormLabel,
   FormHelperText,
-  Radio,
-  RadioGroup,
   TextField,
   Button,
   Grid,
@@ -84,7 +81,7 @@ export default () => {
         </div>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container spacing={5} alignItems="center" justify="center">
+          <Grid container spacing={5}>
             <Grid item xs={12}>
               <FormControl style={{ width: "100%" }}>
                 <FormLabel className={classes.formLabel}>Name *</FormLabel>
@@ -127,11 +124,11 @@ export default () => {
                   )}
                   name="location"
                   control={control}
-                  rules={{ required: true, minLength: 6, maxLength: 30 }}
+                  rules={{ required: true, minLength: 6, maxLength: 50 }}
                 />
                 {errors?.location && (
                   <FormHelperText className={classes.errorText}>
-                    Please enter a park name or address
+                    Please enter a valid location
                   </FormHelperText>
                 )}
               </FormControl>
@@ -156,9 +153,9 @@ export default () => {
                   control={control}
                   rules={{ required: true }}
                 />
-                {errors?.datetime?.type === "required" && (
+                {errors?.datetime && (
                   <FormHelperText className={classes.errorText}>
-                    Required
+                    Please select a date and time
                   </FormHelperText>
                 )}
               </FormControl>
@@ -182,8 +179,8 @@ export default () => {
                   control={control}
                   rules={{
                     required: true,
-                    pattern: /^([1-9]|[01][0-9][0-9]|100[0-0])$/,
-                    minLength: 1,
+                    min: 1,
+                    max: 1000,
                   }}
                 />
                 {errors?.numFed && (
@@ -208,11 +205,11 @@ export default () => {
                   )}
                   name="feedType"
                   control={control}
-                  rules={{ required: true }}
+                  rules={{ required: true, minLength: 2, maxLength: 50 }}
                 />
-                {errors?.feedType?.type === "required" && (
+                {errors?.feedType && (
                   <FormHelperText className={classes.errorText}>
-                    Required
+                    Please enter a valid feed
                   </FormHelperText>
                 )}
               </FormControl>
@@ -234,11 +231,15 @@ export default () => {
                   )}
                   name="feedAmount"
                   control={control}
-                  rules={{ required: true }}
+                  rules={{
+                    required: true,
+                    min: 1,
+                    max: 5000,
+                  }}
                 />
-                {errors?.feedAmount?.type === "required" && (
+                {errors?.feedAmount && (
                   <FormHelperText className={classes.errorText}>
-                    Required
+                    Please enter a number between 1 and 5000
                   </FormHelperText>
                 )}
               </FormControl>
@@ -263,108 +264,6 @@ export default () => {
             </Button>
           </Grid>
         </form>
-        // <form className={classes.form} noValidate>
-        //   <Grid container spacing={3} align="center">
-        //     <Grid item xs={12}>
-        //       <TextField
-        //         className={classes.field}
-        //         label="Name"
-        //         name="name"
-        //         value={entry.name}
-        //         onChange={(e) => {
-        //           handleInputChange(e);
-        //         }}
-        //         variant="outlined"
-        //         required
-        //       />
-        //     </Grid>
-        //     <Grid item xs={12}>
-        //       <TextField
-        //         label="Feed date and time"
-        //         name="datetime"
-        //         type="datetime-local"
-        //         value={entry.datetime}
-        //         onChange={(e) => {
-        //           handleInputChange(e);
-        //         }}
-        //         InputLabelProps={{
-        //           shrink: true,
-        //         }}
-        //         required
-        //       />
-        //     </Grid>
-        //     <Grid item xs={12}>
-        //       <TextField
-        //         className={classes.field}
-        //         label="Location"
-        //         name="location"
-        //         value={entry.location}
-        //         onChange={(e) => {
-        //           handleInputChange(e);
-        //         }}
-        //         variant="outlined"
-        //         required
-        //       />
-        //     </Grid>
-        //     <Grid item xs={12}>
-        //       <TextField
-        //         className={classes.field}
-        //         label="Number of ducks fed"
-        //         name="numFed"
-        //         value={entry.numFed}
-        //         onChange={(e) => {
-        //           handleInputChange(e);
-        //         }}
-        //         variant="outlined"
-        //         required
-        //       />
-        //     </Grid>
-        //     <Grid item xs={12}>
-        //       <TextField
-        //         className={classes.field}
-        //         label="Feed type"
-        //         name="feedType"
-        //         value={entry.feedType}
-        //         onChange={(e) => {
-        //           handleInputChange(e);
-        //         }}
-        //         variant="outlined"
-        //         required
-        //       />
-        //     </Grid>
-        //     <Grid item xs={12}>
-        //       <TextField
-        //         className={classes.field}
-        //         label="Feed amount"
-        //         name="feedAmount"
-        //         value={entry.feedAmount}
-        //         onChange={(e) => {
-        //           handleInputChange(e);
-        //         }}
-        //         variant="outlined"
-        //         required
-        //       />
-        //     </Grid>
-        //     <Grid item xs={3}>
-        //       <Button
-        //         color="primary"
-        //         variant="outlined"
-        //         onClick={cancelNewEntry}
-        //       >
-        //         Cancel
-        //       </Button>
-        //     </Grid>
-        //     <Grid item xs={3}>
-        //       <Button
-        //         color="primary"
-        //         variant="contained"
-        //         onClick={saveNewEntry}
-        //       >
-        //         Submit
-        //       </Button>
-        //     </Grid>
-        //   </Grid>
-        // </form>
       )}
     </div>
   );
