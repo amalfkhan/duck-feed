@@ -6,6 +6,14 @@ const addEntryUseStyles = makeStyles({
     padding: "10px 20px",
     // display: "inline-block",
   },
+  field: {
+    marginTop: 20,
+    marginBottom: 20,
+    width: "80%",
+  },
+  helperText: {
+    color: "red",
+  },
 });
 
 const entriesListUseStyles = makeStyles({
