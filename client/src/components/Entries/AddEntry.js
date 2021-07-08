@@ -1,15 +1,8 @@
-import { makeStyles, Grid, Button } from "@material-ui/core";
-
-const useStyles = makeStyles({
-  button: {
-    margin: 20,
-    padding: "10px 20px",
-    // display: "inline-block",
-  },
-});
+import { Grid, Button } from "@material-ui/core";
+import { addEntryUseStyles } from "./styles";
 
 const AddEntry = () => {
-  const classes = useStyles();
+  const classes = addEntryUseStyles();
 
   return (
     <Grid item xs={12}>

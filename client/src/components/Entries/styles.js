@@ -1,17 +1,28 @@
-import axios from "axios";
+import { makeStyles } from "@material-ui/core";
 
-const http = axios.create({
-  baseURL: "http://localhost:5000/api",
+const addEntryUseStyles = makeStyles({
+  button: {
+    margin: 20,
+    padding: "10px 20px",
+    // display: "inline-block",
+  },
 });
 
-class EntriesDataServices {
-  getAllEntries() {
-    return http.get("/");
-  }
+const entriesListUseStyles = makeStyles({
+  bullet: {
+    display: "inline-block",
+    margin: "0 10px",
+    transform: "scale(0.8)",
+  },
+  cuisine: {
+    fontSize: 14,
+  },
+  address: {
+    marginBottom: 10,
+  },
+  restaurantCard: {
+    padding: "15px",
+  },
+});
 
-  createEntry(data) {
-    return http.post("/entry", data);
-  }
-}
-
-export default new RestaurantDataService();
+export { addEntryUseStyles, entriesListUseStyles };

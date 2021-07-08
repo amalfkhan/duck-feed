@@ -1,33 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  makeStyles,
-  Card,
-  Typography,
-  CardContent,
-  CardActions,
-  Button,
-} from "@material-ui/core";
+import { Card, Typography, CardContent } from "@material-ui/core";
 import EntryDataServices from "../../services/entry.services";
-
-const useStyles = makeStyles({
-  bullet: {
-    display: "inline-block",
-    margin: "0 10px",
-    transform: "scale(0.8)",
-  },
-  cuisine: {
-    fontSize: 14,
-  },
-  address: {
-    marginBottom: 10,
-  },
-  restaurantCard: {
-    padding: "15px",
-  },
-});
+import { entriesListUseStyles } from "./styles";
 
 const EntriesList = () => {
-  const classes = useStyles();
+  const classes = entriesListUseStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
   const [entries, setEntries] = useState([]);
@@ -48,6 +25,7 @@ const EntriesList = () => {
       });
   };
 
+  //create a card to display each entry
   return (
     <>
       {entries.map((entry, index) => {

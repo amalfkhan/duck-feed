@@ -1,20 +1,6 @@
-import { makeStyles, Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import AddEntry from "./Entries/AddEntry";
-
-const useStyles = makeStyles({
-  header: {
-    paddingTop: "5%",
-    paddingBottom: "2%",
-  },
-  cuisine: {
-    fontSize: 16,
-  },
-  button: {
-    margin: 20,
-    padding: "10px 20px",
-    display: "inline-block",
-  },
-});
+import useStyles from "./styles";
 
 const PageHeader = () => {
   const classes = useStyles();
@@ -33,11 +19,7 @@ const PageHeader = () => {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography
-          variant="h6"
-          className={classes.address}
-          color="textSecondary"
-        >
+        <Typography variant="h6" color="textSecondary">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </Typography>
       </Grid>
