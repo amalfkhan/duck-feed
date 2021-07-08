@@ -1,3 +1,5 @@
+// functions to handle access/addition/modification of data in the db
+
 import Entry from "../models/entry.js";
 
 export default class EntriesController {
@@ -12,21 +14,14 @@ export default class EntriesController {
 
   static async addEntry(req, res) {
     try {
-      const newEntry = new Entry({
-        name: "duck feeder 201",
-        datetime: new Date(),
-        location: "lohe",
-        numFed: 22,
-        feedType: "corn",
-        feedAmount: "127",
-      });
+      const newEntry = new Entry(req.body);
       newEntry
         .save()
         .then((data) => {
           res.status(200).send(data);
         })
         .catch((err) => {
-          console.error("Could not save new entry in addEntry() - e: " + err);
+          console.error("failed to save entry: " + err);
         });
     } catch (err) {
       res.status(500).json({ message: err });

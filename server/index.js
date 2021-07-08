@@ -20,6 +20,5 @@ mongoose
     });
   })
   .catch((err) => {
-    console.error(err.message);
-    console.log("hello");
+    console.error("failed db connection: " + err.message);
   });
