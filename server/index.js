@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import routes from "./routes.js";
+import router from "./routes.js";
 
 const dbURI =
   "mongodb+srv://amalfkhan:amalfkhan23@cluster0.da06f.mongodb.net/duck-feed";
@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use("/api", routes);
+app.use("/api", router);
 
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })

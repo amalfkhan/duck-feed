@@ -1,3 +1,5 @@
+//ADD INFO ON INSTALL/RUN
+
 ![Home/Log page](https://i.imgur.com/ADDIMAGE.png)
 
 # Duck Feed
