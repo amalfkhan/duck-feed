@@ -2,12 +2,7 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Grid, Button, TextField } from "@material-ui/core";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
+import EntriesDataServices from "../../services/entry.services";
 import { addEntryUseStyles } from "./styles";
 
 export default () => {
@@ -16,8 +11,7 @@ export default () => {
   const [submitted, setSubmitted] = useState(false);
   const [entry, setEntry] = useState({
     name: "",
-    date: "",
-    time: "",
+    datetime: "",
     location: "",
     numFed: "",
     feedType: "",
@@ -25,10 +19,13 @@ export default () => {
   });
 
   const handleInputChange = (e) => {
+    console.log(e.target.value);
+    console.log(e.target.name);
     setEntry({ ...entry, [e.target.name]: e.target.value });
   };
 
   const saveNewEntry = async () => {
+    console.log(entry);
     //try/catch for saving to db
     setSubmitted(true);
   };
@@ -69,26 +66,17 @@ export default () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                className={classes.field}
-                label="Date"
-                name="date"
-                value={entry.date}
+                label="Feed date and time"
+                name="datetime"
+                type="datetime-local"
+                defaultValue="2017-05-24T10:30"
+                // value={entry.date}
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                className={classes.field}
-                label="Time"
-                name="time"
-                value={entry.date}
-                onChange={(e) => {
-                  handleInputChange(e);
+                InputLabelProps={{
+                  shrink: true,
                 }}
-                variant="outlined"
               />
             </Grid>
             <Grid item xs={12}>
@@ -96,7 +84,7 @@ export default () => {
                 className={classes.field}
                 label="Location"
                 name="location"
-                value={entry.date}
+                value={entry.location}
                 onChange={(e) => {
                   handleInputChange(e);
                 }}
