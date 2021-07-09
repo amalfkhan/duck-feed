@@ -17,33 +17,6 @@ export default () => {
   const history = useHistory();
   const classes = addEntryUseStyles();
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState({ error: false, errorText: "" });
-  const [entry, setEntry] = useState({
-    name: "",
-    datetime: "2021-01-01T12:00",
-    location: "",
-    numFed: "",
-    feedType: "",
-    feedAmount: "",
-  });
-
-  const handleInputChange = (e) => {
-    console.log(new Date().toISOString().substring(0, 10));
-    console.log(e.target.value);
-    console.log(e.target.name);
-    setEntry({ ...entry, [e.target.name]: e.target.value });
-  };
-
-  const saveNewEntry = async () => {
-    console.log(entry);
-
-    //try/catch for saving to db
-    setSubmitted(true);
-  };
-
-  const cancelNewEntry = () => {
-    history.push("/");
-  };
 
   const {
     handleSubmit,
@@ -60,8 +33,15 @@ export default () => {
     },
   });
 
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+  const onSubmit = async (data) => {
+    setSubmitted(true);
+    try {
+      const res = await EntriesDataServices.createEntry(data);
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+      // if (e.response) handleError(e.response.data.error);
+    }
   };
 
   return (
@@ -100,11 +80,12 @@ export default () => {
                     required: true,
                     minLength: 3,
                     maxLength: 30,
+                    pattern: /^[a-zA-Z'-. ]+$/,
                   }}
                 />
                 {errors?.name && (
                   <FormHelperText className={classes.errorText}>
-                    Please enter a name of minimum 3 characters
+                    Please enter a valid name of minimum 3 characters
                   </FormHelperText>
                 )}
               </FormControl>
@@ -124,7 +105,11 @@ export default () => {
                   )}
                   name="location"
                   control={control}
-                  rules={{ required: true, minLength: 6, maxLength: 50 }}
+                  rules={{
+                    required: true,
+                    minLength: 3,
+                    maxLength: 50,
+                  }}
                 />
                 {errors?.location && (
                   <FormHelperText className={classes.errorText}>
@@ -181,11 +166,12 @@ export default () => {
                     required: true,
                     min: 1,
                     max: 1000,
+                    pattern: /^[0-9]*$/,
                   }}
                 />
                 {errors?.numFed && (
                   <FormHelperText className={classes.errorText}>
-                    Please enter a number between 1 and 1000
+                    Please enter a numeric value between 1 and 1000
                   </FormHelperText>
                 )}
               </FormControl>
@@ -205,11 +191,16 @@ export default () => {
                   )}
                   name="feedType"
                   control={control}
-                  rules={{ required: true, minLength: 2, maxLength: 50 }}
+                  rules={{
+                    required: true,
+                    minLength: 2,
+                    maxLength: 50,
+                    pattern: /^\d*[a-zA-Z][a-zA-Z0-9 ]*$/,
+                  }}
                 />
                 {errors?.feedType && (
                   <FormHelperText className={classes.errorText}>
-                    Please enter a valid feed
+                    Please enter a valid feed (no symbols)
                   </FormHelperText>
                 )}
               </FormControl>
@@ -235,11 +226,12 @@ export default () => {
                     required: true,
                     min: 1,
                     max: 5000,
+                    pattern: /^[0-9]*$/,
                   }}
                 />
                 {errors?.feedAmount && (
                   <FormHelperText className={classes.errorText}>
-                    Please enter a number between 1 and 5000
+                    Please enter a numeric value between 1 and 5000
                   </FormHelperText>
                 )}
               </FormControl>
