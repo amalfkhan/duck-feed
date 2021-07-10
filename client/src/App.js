@@ -1,19 +1,22 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import PageHeader from "./components/PageHeader";
-import EntriesList from "./components/Entries/EntriesList";
+import EntriesPage from "./components/Entries/EntriesPage";
 import AddEntry from "./components/Entries/AddEntry";
 import FourZeroFour from "./components/FourZeroFour";
+import useStyles from "./styles";
 
 function App() {
+  const classes = useStyles();
   return (
     <BrowserRouter>
-      <PageHeader>
-        <Switch>
-          <Route exact path={"/"} component={EntriesList} />
-          <Route exact path={"/add"} render={() => <AddEntry />} />
-          <Route path="" render={() => <FourZeroFour />} />
-        </Switch>
-      </PageHeader>
+      <div className={classes.root}>
+        <div className={classes.pageContainer}>
+          <Switch>
+            <Route exact path={"/"} component={EntriesPage} />
+            <Route exact path={"/add"} render={() => <AddEntry />} />
+            <Route path="" render={() => <FourZeroFour />} />
+          </Switch>
+        </div>
+      </div>
     </BrowserRouter>
   );
 }

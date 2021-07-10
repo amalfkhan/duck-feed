@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Card, Typography, CardContent, Button } from "@material-ui/core";
+import {
+  Card,
+  Typography,
+  CardContent,
+  Container,
+  Grid,
+} from "@material-ui/core";
 import EntryDataServices from "../../services/entry.services";
-import { entriesListUseStyles } from "./styles";
+import { entryCardUseStyles } from "./styles";
 
-const EntriesList = () => {
-  const classes = entriesListUseStyles();
+//grid styling from old commit
+
+const EntriesPage = () => {
+  const classes = entryCardUseStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
   const [entries, setEntries] = useState([]);
@@ -28,23 +35,20 @@ const EntriesList = () => {
 
   //create a card to display each entry
   return (
-    <>
-      <Button
-        variant="contained"
-        color="primary"
-        // className={classes.button}
-        component={Link}
-        to={{ pathname: "/add" }}
-      >
-        Add entry
-      </Button>
+    // <Container>
+    <Grid
+      className={classes.reviewsContainer}
+      container
+      spacing={3}
+      justify="center"
+    >
       {entries.map((entry, index) => {
         return (
-          <div key={index}>
-            <Card className={classes.restaurantCard} variant="outlined">
+          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+            <Card className={classes.entryCard} variant="outlined">
               <CardContent>
                 <Typography
-                  className={classes.cuisine}
+                  className={classes.datetime}
                   color="textSecondary"
                   gutterBottom
                 >
@@ -63,11 +67,12 @@ const EntriesList = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </div>
+          </Grid>
         );
       })}
-    </>
+    </Grid>
+    // </Container>
   );
 };
 
-export default EntriesList;
+export default EntriesPage;

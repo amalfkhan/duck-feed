@@ -80,7 +80,7 @@ export default () => {
                     required: true,
                     minLength: 3,
                     maxLength: 30,
-                    pattern: /^[a-zA-Z'-. ]+$/,
+                    pattern: /^[a-zA-Z0-9'-. ]+$/,
                   }}
                 />
                 {errors?.name && (

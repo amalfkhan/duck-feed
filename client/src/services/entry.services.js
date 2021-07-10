@@ -6,6 +6,7 @@ class EntriesDataServices {
   }
 
   createEntry(data) {
+    console.log(data.datetime);
     return http.post("/entry", data);
   }
 }

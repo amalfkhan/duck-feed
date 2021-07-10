@@ -15,6 +15,7 @@ export default class EntriesController {
   static async addEntry(req, res) {
     try {
       const newEntry = new Entry(req.body);
+      console.log(newEntry);
       newEntry
         .save()
         .then((data) => {
