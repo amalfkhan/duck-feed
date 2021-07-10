@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  Card,
-  Typography,
-  CardContent,
-  Container,
-  Grid,
-} from "@material-ui/core";
+import { Card, Typography, CardContent, Grid } from "@material-ui/core";
 import EntryDataServices from "../../services/entry.services";
 import { entryCardUseStyles } from "./styles";
 
-//grid styling from old commit
-
 const EntriesPage = () => {
   const classes = entryCardUseStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   const [entries, setEntries] = useState([]);
 
@@ -35,7 +26,6 @@ const EntriesPage = () => {
 
   //create a card to display each entry
   return (
-    // <Container>
     <Grid
       className={classes.reviewsContainer}
       container
@@ -48,22 +38,54 @@ const EntriesPage = () => {
             <Card className={classes.entryCard} variant="outlined">
               <CardContent>
                 <Typography
-                  className={classes.datetime}
-                  color="textSecondary"
-                  gutterBottom
+                  className={classes.altParagraph}
+                  style={{ fontStyle: "italic" }}
                 >
-                  {entry.datetime}
-                </Typography>
-                <Typography variant="h5" component="h2">
                   {entry.name}
                 </Typography>
-                <Typography color="textSecondary">{entry.location}</Typography>
-                <Typography variant="body2" component="p">
-                  {entry.numFed}
-                  {bull}
+                <Typography
+                  component="h3"
+                  className={classes.categorySubHeading}
+                  style={{ paddingTop: "7px" }}
+                >
+                  {/* extract date from datetimestamp */}
+                  {entry.datetime.split("T")[0]}
+                </Typography>
+                <Typography
+                  component="h3"
+                  className={classes.categorySubHeading}
+                  style={{ paddingBottom: "7px" }}
+                >
+                  {/* extract hours and minutes from datetimestamp */}
+                  {entry.datetime.split("T")[1].split(".")[0].split(":")[0]}
+                  {":"}
+                  {entry.datetime.split("T")[1].split(".")[0].split(":")[1]}
+                  {" utc"}
+                </Typography>
+                <Typography
+                  component="p"
+                  className={classes.paragraph}
+                  gutterBottom
+                >
+                  {"location: "}
+                  {entry.location}
+                </Typography>
+                <Typography component="p" className={classes.altParagraph}>
+                  {"Feed type: "}
                   {entry.feedType}
-                  {bull}
+                </Typography>
+                <Typography component="p" className={classes.altParagraph}>
+                  {"Feed amount: "}
                   {entry.feedAmount}
+                  {" g"}
+                </Typography>
+                <Typography
+                  component="p"
+                  className={classes.altParagraph}
+                  style={{ paddingTop: "7px" }}
+                >
+                  {"Number fed: "}
+                  {entry.numFed}
                 </Typography>
               </CardContent>
             </Card>
@@ -71,7 +93,6 @@ const EntriesPage = () => {
         );
       })}
     </Grid>
-    // </Container>
   );
 };
 

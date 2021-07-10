@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import { theme } from "../../styles";
 
 const addEntryUseStyles = makeStyles({
   button: {
@@ -16,29 +17,70 @@ const addEntryUseStyles = makeStyles({
   },
 });
 
-const entriesPageUseStyles = makeStyles({
+const entriesPageUseStyles = makeStyles((theme) => ({
   header: {
     paddingTop: "5%",
     paddingBottom: "3%",
   },
-  button: {
-    marginBottom: "5%",
-    padding: "10px 20px",
-    display: "inline-block",
+  pageTitle: {
+    ...theme.typography.pageTitle,
   },
-});
+  pageSubtitleSans: {
+    ...theme.typography.pageSubtitleSans,
+    marginBottom: theme.spacing(2),
+  },
+  pageSubtitleSerif: {
+    ...theme.typography.pageSubtitleSerif,
+    marginBottom: theme.spacing(2),
+  },
+  categoryHeading: {
+    ...theme.typography.categoryHeading,
+    paddingBottom: theme.spacing(6),
+  },
+  button: {
+    ...theme.typography.button,
+    padding: theme.spacing(0, 2, 2, 0),
+    minHeight: 0,
+    minWidth: 0,
+    textTransform: "none",
+  },
+  headingContainer: {
+    padding: theme.spacing(6, 0),
+  },
+  categoryContainer: {
+    padding: theme.spacing(8, 0),
+  },
+}));
 
 const entryCardUseStyles = makeStyles({
-  bullet: {
-    display: "inline-block",
-    margin: "0 10px",
-    transform: "scale(0.8)",
-  },
-  datetime: {
-    fontSize: 14,
-  },
   entryCard: {
     padding: "15px",
+  },
+  categorySubHeading: {
+    ...theme.typography.categorySubHeading,
+  },
+  paragraph: {
+    ...theme.typography.paragraph,
+    marginBottom: theme.spacing(2),
+  },
+  altParagraph: {
+    ...theme.typography.altParagraph,
+  },
+  textButton: {
+    ...theme.typography.textButton,
+    padding: theme.spacing(1, 1, 1, 0),
+    minHeight: 0,
+    minWidth: 0,
+  },
+  img: {
+    height: "100%",
+    width: "100%",
+  },
+  imgCard: {
+    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
+  },
+  cardContent: {
+    padding: theme.spacing(0),
   },
 });
 
