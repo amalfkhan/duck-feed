@@ -27,7 +27,12 @@ const theme = createMuiTheme({
       fontFamily: "PT Serif",
       fontSize: 15,
     },
-    categorySubHeading: {
+    subHeading1: {
+      fontFamily: "Playfair Display",
+      fontWeight: 500,
+      fontSize: 24,
+    },
+    subHeading2: {
       fontFamily: "Montserrat",
       fontWeight: 600,
       fontSize: 14,

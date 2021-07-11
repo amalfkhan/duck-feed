@@ -1,3 +1,4 @@
+//compontent that displays layout of entries page, and houses component that renders each individual component
 import { Typography, Container, Button, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import EntryCards from "./EntryCards";
@@ -20,7 +21,7 @@ const EntriesPage = () => {
             className={classes.pageSubtitleSans}
             gutterBottom
           >
-            DATA LOG
+            Dr. Ayoola Winston
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -29,8 +30,10 @@ const EntriesPage = () => {
             className={classes.pageSubtitleSerif}
             gutterBottom
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            This website is a portal being used to crowdsource data on duck
+            feeding at parks around the world. By entering data you are agreeing
+            for it to be used in Dr. Ayoola Winston's study being completed
+            through the Green Source research institute.
           </Typography>
         </Grid>
         <Grid item xs={12}>

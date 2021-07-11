@@ -5,23 +5,51 @@ const addEntryUseStyles = makeStyles({
   button: {
     margin: 20,
     padding: "10px 20px",
-    // display: "inline-block",
   },
-  field: {
-    marginTop: 20,
-    marginBottom: 20,
-    width: "60%",
+  formLabel: {
+    ...theme.typography.pageSubtitleSerif,
+    color: "black",
+    paddingBottom: "10px",
   },
-  helperText: {
+  errorText: {
+    ...theme.typography.pageSubtitleSans,
     color: "red",
+    fontSize: 12,
+  },
+  subHeading: {
+    ...theme.typography.subHeading1,
+    paddingBottom: 20,
+  },
+  paper: {
+    padding: "40px 40px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "50%",
+  },
+  form: {
+    width: "100%",
+    margin: theme.spacing(3),
+  },
+  pageTitle: {
+    ...theme.typography.pageTitle,
+  },
+  button: {
+    ...theme.typography.button,
+    padding: theme.spacing(1, 2, 2, -1),
+    minHeight: 0,
+    minWidth: 0,
+    "&:hover": {
+      backgroundColor: "#fff",
+      textDecoration: "underline",
+    },
+  },
+  headingContainer: {
+    padding: theme.spacing(6, 0),
   },
 });
 
 const entriesPageUseStyles = makeStyles((theme) => ({
-  header: {
-    paddingTop: "5%",
-    paddingBottom: "3%",
-  },
   pageTitle: {
     ...theme.typography.pageTitle,
   },
@@ -33,10 +61,6 @@ const entriesPageUseStyles = makeStyles((theme) => ({
     ...theme.typography.pageSubtitleSerif,
     marginBottom: theme.spacing(2),
   },
-  categoryHeading: {
-    ...theme.typography.categoryHeading,
-    paddingBottom: theme.spacing(6),
-  },
   button: {
     ...theme.typography.button,
     padding: theme.spacing(0, 2, 2, 0),
@@ -47,17 +71,14 @@ const entriesPageUseStyles = makeStyles((theme) => ({
   headingContainer: {
     padding: theme.spacing(6, 0),
   },
-  categoryContainer: {
-    padding: theme.spacing(8, 0),
-  },
 }));
 
 const entryCardUseStyles = makeStyles({
   entryCard: {
     padding: "15px",
   },
-  categorySubHeading: {
-    ...theme.typography.categorySubHeading,
+  subHeading2: {
+    ...theme.typography.subHeading2,
   },
   paragraph: {
     ...theme.typography.paragraph,
@@ -65,22 +86,6 @@ const entryCardUseStyles = makeStyles({
   },
   altParagraph: {
     ...theme.typography.altParagraph,
-  },
-  textButton: {
-    ...theme.typography.textButton,
-    padding: theme.spacing(1, 1, 1, 0),
-    minHeight: 0,
-    minWidth: 0,
-  },
-  img: {
-    height: "100%",
-    width: "100%",
-  },
-  imgCard: {
-    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;",
-  },
-  cardContent: {
-    padding: theme.spacing(0),
   },
 });
 

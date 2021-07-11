@@ -1,3 +1,4 @@
+//scheme to provide data restraints on documents being added to the mongo database
 import mongoose from "mongoose";
 
 const entryScheme = mongoose.Schema(

@@ -1,3 +1,4 @@
+//second layer of app which handles routing and provides the theme to all child components
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core";
 import EntriesPage from "./components/Entries/EntriesPage";

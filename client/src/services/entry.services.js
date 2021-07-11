@@ -1,3 +1,5 @@
+//api access points needed for entries
+//seperated into independent file to maintain organization if app scaled
 import http from "./http-common";
 
 class EntriesDataServices {

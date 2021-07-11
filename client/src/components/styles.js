@@ -1,22 +1,23 @@
 import { makeStyles } from "@material-ui/core";
 
-export default makeStyles({
-  // header: {
-  //   paddingTop: "5%",
-  //   paddingBottom: "2%",
-  // },
-  // button: {
-  //   margin: 20,
-  //   padding: "10px 20px",
-  //   display: "inline-block",
-  // },
-  // pageContent: {
-  //   display: "flex",
-  //   flexDirection: "column",
-  //   alignItems: "center",
-  // },
-  // header: {
-  //   paddingTop: "5%",
-  //   paddingBottom: "2%",
-  // },
-});
+const fourZeroFourUseStyles = makeStyles((theme) => ({
+  pageTitle: {
+    ...theme.typography.pageTitle,
+  },
+  pageSubtitleSerif: {
+    ...theme.typography.pageSubtitleSerif,
+    margin: theme.spacing(2, 0, 5, 0),
+  },
+  button: {
+    ...theme.typography.button,
+    padding: theme.spacing(0, 2, 2, 0),
+    minHeight: 0,
+    minWidth: 0,
+    textTransform: "none",
+  },
+  headingContainer: {
+    padding: theme.spacing(10, 0),
+  },
+}));
+
+export { fourZeroFourUseStyles };

@@ -1,3 +1,6 @@
+// express router to handle client request endpoints
+// directs requests to controller that performs required database related action
+
 import express from "express";
 import EntriesController from "./controllers/entries.controller.js";
 import validation from "./middlewares/validation.js";
