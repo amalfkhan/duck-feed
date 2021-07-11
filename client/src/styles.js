@@ -1,4 +1,4 @@
-import { createMuiTheme, makeStyles } from "@material-ui/core";
+import { createTheme, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     pageTitle: {
       fontFamily: "Playfair Display",
